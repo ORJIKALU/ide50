@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}
+{{schoolInfo[0]["school_name"].upper()}}
+{% endblock %}
+result sheet
+{% block main %}
+{% set id = class_list[0]["id"]|string+classData[0]["id"]|string+schoolInfo[0]["id"]|string%}
+<div id="resultsheet">
+<span class="blue">{{schoolInfo[0]["school_name"].upper()}}</h1></span>
+<p>ADDRESS: &nbsp;&nbsp;<span class="blue">{{schoolInfo[0]["address"].upper()}}</span></p>
+<p>NAME: &nbsp;&nbsp;<span class= "green"><u>{{class_list[0]["surname"]}} {{class_list[0]["firstname"]}} {{class_list[0]["othername"]}}</u></span>&nbsp;&nbsp;&nbsp;&nbsp;SEX:&nbsp;&nbsp;<span class="green"><u>{{class_list[0]["sex"]}}</u></span></p>
+<p>CLASS:&nbsp;&nbsp;<span class="green"><u>{{classData[0]["name"]}}</u></span>&nbsp;&nbsp;&nbsp;ADMISSION NUMBER:&nbsp;&nbsp;<span class="green"><u>{{id}}</u></span></p>
+
+
+
+   <table name="score_table" class = "table table-sm" border="10 solid blue" >
+     <thead>
+       <th>no</th>
+        <th>subject</th>
+        <th>ca</th>
+        <th>test</th>
+        <th>exam</th>
+        <th>total</th>
+        <th>subject position</th>
+
+
+
+     </thead>
+     <tbody>
+     {% for subject in subjectData%}
+     <tr>
+     <td>{{loop.index}}</td>
+     <td>{{subject["name"].upper()}}</td>
+     <td>{{caData[0][subject["name"]]}}</td>
+     <td>{{testData[0][subject["name"]]}}</td>
+     <td>{{examData[0][subject["name"]]}}</td>
+     <td>{{mastersheet[0][subject["name"]]}}</td>
+     <td>{{subject_position[0][subject["name"]]}}</td>
+     </tr>
+     {% endfor %}
+     <tr>
+         <td colspan="7">TOTAL:&nbsp; {{mastersheet[0]["total_score"]}} &nbsp;&nbsp;&nbsp;&nbsp; AVERAGE:&nbsp;{{ "%.2f"|format(mastersheet[0]["average"]|float) }} <p><span class="green">position:&nbsp;&nbsp;{{mastersheet[0]["position"]}} &nbsp;&nbsp;out of&nbsp;&nbsp; {{classData[0]["no_of_students"]}}</span></p></td>
+     </tr>
+     </tbody>
+     </table>
+     </div>
+{% endblock %}

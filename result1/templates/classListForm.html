@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upload Classlist
+{% endblock %}
+
+{% block main %}
+<form action="/classCreated" method="post">
+{% for i in range(n)  %}
+  <div class="form-row">
+    <div class="col">
+        {% set id = i|string %}
+        {% set surname = "s"+ id %}
+        {% set firstname = "f"+ id%}
+        {% set othername = "o"+ id%}
+        {% set sex = "g"+ id%}
+
+     <input type="text" class="form-control" placeholder="surname" name =  "{{surname}}">
+    </div>
+    <div class="col">
+     <input type="text" class="form-control" placeholder="firstname" name="{{firstname}}">
+    </div>
+     <div class="col">
+      <input type="text" class="form-control" placeholder="othernames" name="{{othername}}">
+    </div>
+    <div class ="col">
+      <label class="radio-inline"><input class = "col" type="radio" name="{{sex}}" value="male"> Male</label>
+      <label class="radio-inline"><input class = "col" type="radio" name="{{sex}}" value="female"> female</label>
+    </div>
+  </div>
+
+  
+  
+{% endfor %}
+ <button class="btn btn-primary" type="submit">Submit</button>
+ </form>
+
+{% endblock %}

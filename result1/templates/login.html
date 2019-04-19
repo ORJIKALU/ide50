@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+   
+<div class="form-w3ls">
+
+    <ul class="tab-group cl-effect-4">
+        <li class="tab active"><a href="#signin-agile">Sign In</a></li>
+		<li class="tab"><a href="#signup-agile">CHECK RESULT</a></li>        
+    </ul>
+    <div class="tab-content">
+        <div id="signin-agile">   
+			<form action="/login" method="post">
+				
+				<p class="header">User Name</p>
+				<input type="text" name="username" placeholder="User Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Name';}" required="required">
+				
+				<p class="header">Password</p>
+				<input type="password" name="password" placeholder="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="required">
+				
+				<input type="checkbox" id="brand" value="">
+				<label for="brand"><span></span> Remember me?</label>
+				
+				<input type="submit" class="sign-in" value="Sign In">
+				<center><font size=16 >OR</font></center>
+			</form>
+			<form action="/register" method="get">
+				<input type="register" class="sign-in"value="register" ">
+
+			</form>
+		</div>
+		<div id="signup-agile">   
+			<form action="#" method="post">
+				
+				<p class="header">User Name</p>
+				<input type="text" name="user" placeholder="Your Full Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Full Name';}" required="required">
+				
+				<p class="header">Email Address</p>
+				<input type="text" name="email" placeholder="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="required">
+				
+				<input type="submit" class="register" >
+			</form>
+		</div> 
+    </div><!-- tab-content -->
+</div> <!-- /form -->	  
+<!-- js files -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/index.js"></script>
+<!-- /js files -->
+{% endblock %}

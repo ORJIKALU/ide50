@@ -1,0 +1,46 @@
+
+
+{% extends "layout.html" %}
+
+{% block title %}
+portfolio
+{% endblock %}
+
+{% block main %}
+    {%for school in schoolInfo%}
+        <h1>{{school["school_name"].upper()}}</h1>
+        <h2>{{school["address"]}}</h2>
+       <h2>motto: {{school["motto"]}}</h2>
+      <h3>contacts: Email: {{school["email"]}}</h3>  <h3>phone number: {{school["phone_number"]}}</h3>
+      <h1><b>CLASSES</b></h1>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">CLASSNAME</th>
+      <th scope="col">FORM TEACHER</th>
+      <th scope="col">NUMBER OF REGISTERED STUDENTS</th>
+      <th scope="col">NO OF SUBJECT ENTERED FOR THE CLASS</th>
+      <th scope="col">RESULT STATUS</th>
+      <th scope="col">RESULT LAST HISTORY</th>
+    </tr>
+  </thead>
+  <tbody>
+      {%for data in clas%}
+    <tr>
+      <td>{{data["name"]}}</td>
+      <td>{{data["form_master"]}}</td>
+      <td>{{data["no_of_students"]}}</td>
+      <td>{{data["no_of_subjects"]}}</td>
+      <td>{{data["result_status"]}}</td>
+      <td>{{data["history"]}}</td>
+<td><form action="/veiwclass" method="post">
+  <button name = "veiw_class" value = "{{data["id"]}}" type="submit">CLASS</button>
+</form></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+  
+
+    {% endfor %}
+{% endblock %}

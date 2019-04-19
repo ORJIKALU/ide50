@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<div name="register-form">
+                        
+    <div class="form-w3ls">
+
+    <form id="register" action="/register" method="post">
+            <div class="register-form">
+                <hr>
+                 <h1 class="message red"> REGISTER FOR FREE!</h1>
+                <h1>{{message}}</h1>
+            <hr>
+                <h1 class="message"> personal information</h1>
+           <input  name="surname" placeholder="surname" type="text" required="required"/>
+            <input  name="firstname" placeholder="firstname" required="required" type="text"/>
+        <input  name="othername" placeholder="othername"  type="text"/>
+            <hr>
+             <h1 class="message">School information</h1>
+           <input  name="schoolname" placeholder="schoolname" type="text" required="required"/ >
+           <input  name="email" placeholder="email" type="email" required="required"/>
+            <input  name="motto" placeholder="motto" type="text" />
+            <input  name="phone" placeholder="phone number" type="number" required="required"/>
+            <input  name="address" placeholder="address" type="text" required="required"/>
+            <input  name="ca_max" placeholder="ca is over" type="number" required="required"/>
+            <input  name="test_max" placeholder="test is over" type="number" required="required"/>
+            <input  name="exam_max" placeholder="exam is over" type="number" required="required"/>
+
+
+
+            <hr>
+            <h1 class="message">Staff login details</h1>
+            <input class="form-control" name="username" placeholder="Username" type="text"/>
+            <input name="password" placeholder="Password" type="password" required="required"/>
+            <input  name="confirmation" placeholder=" onfirm Password" type="password" required="required"/>
+            <hr>
+            <h1 class="message">Admin Details</h1>
+            
+            <input  name="admin_password" placeholder="admin Password" type="password" required="required"/>
+            <input  name="admin_password_confirmation" placeholder="confirm admin Password" type="password" required="required"/>
+			<a type="submit" class="sign-in" id="submit_registration" value="Register">Register</a>
+			</div>
+    </form>
+    </div>
+    </div>
+
+    <!-- js files -->
+	<script src='/static/js/jquery.min.js'></script>
+	<script src="/static/js/register.js"></script>
+
+<!-- /js files -->
+{% endblock %}

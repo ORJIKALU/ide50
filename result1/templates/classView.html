@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{classData[0]["name"]}}
+{% endblock %}
+
+{% block main %}
+    {%for school in schoolInfo%}
+        <h1>{{school["school_name"].upper()}}</h1>
+        <h2>{{school["address"]}}</h2>
+       <h2>motto: {{school["motto"]}}</h2>
+      <h3>contacts: Email: {{school["email"]}}</h3>  <h3>phone number: {{school["phone_number"]}}</h3>
+    {% endfor %}
+     <h1><b>{{classData[0]["name"].upper()}}  CLASSLIST</b></h1>
+ <table class = "table table-sm">
+  <thead>
+    <tr>
+      <th>EXAM NUMBER</th>
+      <th>SURNAME</th>
+      <th>FIRSTNAME</th>
+      <th>OTHERNAME</th>
+      <th>GENDER</th>
+      
+      {%for subject in subjectData%}<th colspan="5" scope ="col">{{subject["name"].upper()}}</th>{%endfor%}
+      <th>TOTAL</th>
+      <th>AVERAGE</th>
+      <th>POSITION</th>
+
+
+
+  </tr>
+  </thead>
+      
+  <tbody>
+       <tr>
+      <td colspan="5"></td>
+      {%for subject in subjectData%}<td>CASCORE</td><td>TESTSCORE</td><td>EXAMSCORE</td><td>SUBJECT TOTAL</td><td>SUBJECT POSITION</td>{%endfor%}
+      <td colspan="3"></td>
+    </tr>
+      {%for data in mastersheet%}
+    <tr>
+      <td>{{data["id"]}}</td>
+      <td>{{class_list[data["id"]-1]["surname"]}}</td>
+      <td>{{class_list[data["id"]-1]["firstname"]}}</td>
+      <td>{{class_list[data["id"]-1]["othername"]}}</td>
+      <td>{{class_list[data["id"]-1]["sex"]}}</td>
+      {% for  subject in subjectData%}
+      <td>{{caData[data["id"]-1][subject["name"]]}}</td>
+      <td>{{testData[data["id"]-1][subject["name"]]}}</td>
+      <td>{{examData[data["id"]-1][subject["name"]]}}</td>
+      <td>{{data[subject["name"]]}}</td>
+      <td>{{subject_position[data["id"]-1][subject["name"]]}}</td>
+      {%endfor%}
+      <td>{{data["total_score"]}}</td>
+      <td>{{data["average"]}}</td>
+      <td>{{data["position"]}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+
+      
+  <form action ="/make_result" method = "post">
+  </div>
+        <button class="btn btn-primary" name = "result" value = "{{classData[0]["id"]}}">make result</button>
+  </form>
+
+{% endblock %}

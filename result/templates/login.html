@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<div id='login-div'>
+	
+
+<div class="form-w3ls">
+
+   <ul id="tab-group" class="tab-group cl-effect-4">
+        <li class="tab active"><a href="#signin-agile">Sign In</a></li>
+		<li class="tab"><a href="#signup-agile">Check result</a></li>        
+    </ul>
+    <div class="tab-content">
+        <div id="signin-agile">   
+			<form  action = "/login" method="post">
+				
+				<input type="text" name="username" placeholder="User Name" required="required">
+				<input type="password" name="password" placeholder="password" required="required">
+				<span class="psw">Forgot <a href="#">password?</a></span>
+				<a type="submit" id="login" class="sign-in" value="Sign In">sign in</a>
+				<input type="checkbox" id="brand" value="">
+				<label for="brand"><span></span> Remember me?</label>
+				<p ass="or">dont have an account? </p>
+				<a href="/register" type="submit" class="sign-in" value="Register">register</a>
+
+			</form>
+
+		</div>
+		
+		<div id="signup-agile">   
+			<form  action="#" method="post">
+				
+				<input type="number" name="check_result" placeholder="EXAM NO " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'ENTER YOUR EXAM NUMBER';}" required="required">
+				<input type="number" name="check_result" placeholder=" PIN" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'ENTER YOUR PIN';}" required="required">
+				<a type="submit" class="register" value="check result"> check result</a>
+			</form>
+		</div> 
+    </div><!-- tab-content -->
+</div> <!-- /form -->	  
+
+
+<form style="display: hidden" action="/login" method="POST" id = "form">
+	<input type="hidden" id="var1" name="var1" value="">
+	<input type="hidden" id="var2" name="var2" value="">
+
+</form>
+
+</div>
+<!-- js files -->
+	<script src='/static/js/jquery.min.js'></script>
+	<script src="/static/js/index.js"></script>
+
+<!-- /js files -->
+{% endblock %}
+
+

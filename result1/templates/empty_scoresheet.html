@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upload Classlist
+{% endblock %}
+
+{% block main %}
+<h1>SCORE SHEET FOR {{classinfo["name"].upper()}}  {{subject_info["subject"].upper()}}</h1>
+<form action="/submitted" method="post">
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">SURNAME</th>
+      <th scope="col">FIRSTNAME</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for student in class_names %}
+  <div class="form-row">
+        {% set id = student["id"]|string %}
+        <div class="col">   <tr><td>{{student["surname"]}}</td><td>{{student["firstname"]}}</td></div>
+        <div class="col">
+         {% set cascore = "cascore"+ id %}
+         <td><input type="text"  class="form-control" placeholder="cascore" name ="{{cascore}}"></td>
+        </div>
+        <div class="col">
+         {% set testscore = "testscore"+ id %}
+         <td><input type="text" class="form-control" placeholder="testscore" name ="{{testscore}}"></td>
+        </div>
+        <div class="col">
+         {% set examscore = "examscore"+ id %}
+         <td><input type="text" class="form-control" placeholder="examscore" name ="{{examscore}}"></td>
+        </div>
+  </div>
+{% endfor %}
+</table>
+ <button class="btn btn-primary" name="button" value="{{classinfo["id"]}}" type="submit">Submit</button>
+ </form>
+{% endblock %}

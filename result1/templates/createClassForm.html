@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/createClass" method="post">
+        <div class="form-group">
+            <input class="form-control" name="className" placeholder="className" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="email" placeholder="email" type="text"/>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="noOfStudents" placeholder="noOfStudents" type="text"/>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="surname" placeholder="surname" type="text"/>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="firstname" placeholder="firstname" type="text"/>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="othername" placeholder="othername" type="text"/>
+        </div>
+         <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="username" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Password" type="password"/>
+        </div>
+        
+        <button class="btn btn-primary" type="submit">create</button>
+    </form>
+{% endblock %}

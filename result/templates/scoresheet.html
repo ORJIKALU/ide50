@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}
+{{schoolInfo[0]["school_name"].upper()}}
+{% endblock %}
+ {{subjectData[0]["name"]}} &nbsp;&nbsp;scoresheet
+{% block main %}
+<div id="scoresheet">
+ <span class="blue">{{schoolInfo[0]["school_name"].upper()}}</h1></span>
+<p>ADDRESS: &nbsp;&nbsp;<span class="blue">{{schoolInfo[0]["address"].upper()}}</span></p>
+<p>SCORESHEET ON: &nbsp;&nbsp;<span class= "green"><u>{{subjectData[0]["name"]}}</u></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CLASS:&nbsp;&nbsp;<span class="green"><u>{{classData[0]["name"]}}</u></span></p>
+
+   <table class = "table table-sm">
+     <thead>
+       <th>no</th>
+        <th>name</th>
+        <th>ca</th>
+        <th>test</th>
+        <th>exam</th>
+        <th>total</th>
+        <th>subject position</th>
+
+
+
+     </thead>
+     <tbody>
+     {% for student in class_list%}
+     <tr>
+     <td>{{loop.index}}</td>
+     <td>{{student["surname"].upper()}}&nbsp;&nbsp; {{student["firstname"].upper()}}&nbsp;&nbsp; {{student["othername"].upper()}}</td>
+     <td>{{caData[loop.index-1][subjectData[0]["name"]]}}</td>
+     <td>{{testData[loop.index-1][subjectData[0]["name"]]}}</td>
+     <td>{{examData[loop.index-1][subjectData[0]["name"]]}}</td>
+     <td>{{mastersheet[loop.index-1][subjectData[0]["name"]]}}</td>
+     <td>{{subject_position[loop.index-1][subjectData[0]["name"]]}}</td>
+     </tr>
+     {% endfor %}
+     <tr>
+      {% set subject_id = subjectData[0]["id"]|string %}
+      {% set scoresheet_id = subject_id +"_"+classData[0]["id"]|string %}
+
+         <td colspan="4"> <form action="/verify_scoresheet" method="post"><button class="btn btn-primary" name="edit_scoresheet" value="{{scoresheet_id}}">EDIT SCORESHEET</button></form></td>
+        <td colspan="3"><form action="/delete_scoresheet" method="post"><button name="delete_scoresheet" value="{{scoresheet_id}}" class="btn btn-primary" disabled>DELETE SCORESHEET</button></form></td>
+     </tr>
+     </tbody>
+     </table>
+</div>
+{% endblock %}
